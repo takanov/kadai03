@@ -10,7 +10,7 @@ const win = document.getElementById("win");
 const lose = document.getElementById("lose");
 const guClick = document.getElementById("gu-count");
 const choClick = document.getElementById("cho-count");
-const paClick = document.getElementById("[pa-count");
+const paClick = document.getElementById("pa-count");
 
 //idが取得できているか確認
 console.log(state,cpu,gu,cho,pa,player,reset,win,lose);
@@ -48,7 +48,7 @@ start();
 
 //ぐーのボタンを押下した時のイベント
 // =>はアロー関数：勉強しないと
-gu.addEventListener("click",()=>{
+gu.addEventListener("click",function(){
     //プレイヤーのテキストにグーを表示
     player.textContent = jans[0];
 
@@ -56,8 +56,8 @@ gu.addEventListener("click",()=>{
     playjan = jans[0];
 
     //CPUの選択肢を格納する変数に配列jansからランダムに取得した選択肢を格納
-    cpuja = jans[Object.keys(jans)[Math.random() * Object.keys(jans).length]]
-
+    cpuja = jans[Object.keys(jans)[Math.floor(Math.random() * Object.keys(jans).length)]];
+    console.log(cpuja);
     //上記で取得した変数をCPUのテキストに表示
     cpu.textContent = cpuja;
 
@@ -80,7 +80,7 @@ cho.addEventListener("click",()=>{
     playjan = jans[1];
 
     //CPUの選択肢を格納する変数に配列jansからランダムに取得した選択肢を格納
-    cpuja = jans[Object.keys(jans)[Math.random() * Object.keys(jans).length]]
+    cpuja = jans[Object.keys(jans)[Math.random() * Object.keys(jans).length]];
 
     //上記で取得した変数をCPUのテキストに表示
     cpu.textContent = cpuja;
@@ -104,8 +104,8 @@ pa.addEventListener("click",()=>{
     playjan = jans[2];
 
     //CPUの選択肢を格納する変数に配列jansからランダムに取得した選択肢を格納
-    cpuja = jans[Object.keys(jans)[Math.random() * Object.keys(jans).length]]
-
+    cpuja = jans[Object.keys(jans)[Math.random() * Object.keys(jans).length]];
+    
     //上記で取得した変数をCPUのテキストに表示
     cpu.textContent = cpuja;
 
