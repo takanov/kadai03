@@ -72,7 +72,7 @@ gu.addEventListener("click",function(){
 });
 
 //チョキのボタンを押した時イベント。挙動はグーと同じ
-cho.addEventListener("click",()=>{
+cho.addEventListener("click",function(){
     //プレイヤーのテキストにちょきを表示
     player.textContent = jans[1];
 
@@ -80,8 +80,8 @@ cho.addEventListener("click",()=>{
     playjan = jans[1];
 
     //CPUの選択肢を格納する変数に配列jansからランダムに取得した選択肢を格納
-    cpuja = jans[Object.keys(jans)[Math.random() * Object.keys(jans).length]];
-
+    cpuja = jans[Object.keys(jans)[Math.floor(Math.random() * Object.keys(jans).length)]];
+    console.log(cpuja);
     //上記で取得した変数をCPUのテキストに表示
     cpu.textContent = cpuja;
 
@@ -96,7 +96,7 @@ cho.addEventListener("click",()=>{
 });
 
 //パーのボタンを押した時イベント。挙動はグーと同じ
-pa.addEventListener("click",()=>{
+pa.addEventListener("click",function(){
     //プレイヤーのテキストにパーを表示
     player.textContent = jans[2];
 
@@ -104,8 +104,8 @@ pa.addEventListener("click",()=>{
     playjan = jans[2];
 
     //CPUの選択肢を格納する変数に配列jansからランダムに取得した選択肢を格納
-    cpuja = jans[Object.keys(jans)[Math.random() * Object.keys(jans).length]];
-    
+    cpuja = jans[Object.keys(jans)[Math.floor(Math.random() * Object.keys(jans).length)]];
+    console.log(cpuja);
     //上記で取得した変数をCPUのテキストに表示
     cpu.textContent = cpuja;
 
