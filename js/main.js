@@ -119,3 +119,61 @@ pa.addEventListener("click",()=>{
     result();
 });
 
+//リセットボタンをクリックした時のイベント
+reset.addEventListener("click",()=>{
+    //関数start()を呼び出し
+    start();
+    //startにテキストjを表示
+    state.textContent = "最初はぐー！じゃんけん..."
+})
+
+//result()の関数です。じゃんけん判定をここで行う
+function result(){
+    //ifで分岐処理
+    //プレイヤーとCPUが同じだったら、stateにテキスト表示
+    if(playjan === cpuja){
+        state.textContent = "あいこで..."
+
+    //プレイヤーが勝った場合の表示
+    } else if(playjan === jans[0] && cpuja === jans[1] || playjan === jans[1] && cpuja === jans[2] || playjan === jans[2] && cpuja === jans[0]){
+        //statにテキストを表示
+        state.textContent = "かち";
+
+        //関数display()を呼び出し
+        display();
+
+        //勝った回数に一回プラス
+        winCount++;
+
+        //勝った回数をテキストに表示
+        win.textContent = winCount;
+    }else{
+        //statにテキストを表示
+        state.textContent = "まけ";
+
+        //関数display（）を呼び出し
+        display();
+
+        //負けた回数に1プラス
+        loseCount++;
+
+        //負けた回数をテキストに表示
+        lose.textContent = loseCount;
+    }
+}
+
+//start()の関数。ボタンの表示、非表示を設定。disabled＝falseだとボタンを表示され、disabled＝tureだと非表示となる。
+function start(){
+    gu.disabled = false;
+    cho.disabled = false;
+    pa.disabled = false;
+    reset.disabled = true;
+}
+
+//display()の関数。ボタンの表示、非表示を設定。disabled＝falseだとボタンを表示され、disabled＝tureだと非表示となる。
+function display(){
+    gu.disabled = true;
+    cho.disabled = true;
+    pa.disabled = true;
+    reset.disabled = false;
+}
