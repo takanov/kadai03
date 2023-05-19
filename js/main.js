@@ -12,6 +12,7 @@ const guClick = document.getElementById("gu-count");
 const choClick = document.getElementById("cho-count");
 const paClick = document.getElementById("pa-count");
 
+
 //idが取得できているか確認
 console.log(state,cpu,gu,cho,pa,player,reset,win,lose);
 
@@ -67,8 +68,10 @@ gu.addEventListener("click",function(){
     //ぐーをクリックした回数をテキストに表示
     guClick.textContent = guCount;
 
+    let viewGu = guCount;
     //関数result()を呼び出し
     result();
+    return viewGu;
 });
 
 //チョキのボタンを押した時イベント。挙動はグーと同じ
@@ -115,6 +118,8 @@ pa.addEventListener("click",function(){
     //パーをクリックした回数をテキストに表示
     paClick.textContent = paCount;
 
+    
+
     //関数result()を呼び出し
     result();
 });
@@ -123,7 +128,7 @@ pa.addEventListener("click",function(){
 reset.addEventListener("click",()=>{
     //関数start()を呼び出し
     start();
-    //startにテキストjを表示
+    //startにテキストを表示
     state.textContent = "最初はぐー！じゃんけん..."
 })
 
@@ -161,6 +166,48 @@ function result(){
         lose.textContent = loseCount;
     }
 }
+//チャートの記述
+//type: タイプ,data: データ,options: オプション
+// let ctx = document.getElementById("myPieChart");
+
+// let myPieChart = new Chart(ctx, {
+
+//     type: 'pie',
+//     data: {
+//         labels: ["ぐー", "ちょき", "ぱー"],
+//         datasets: [{
+//             backgroundColor: [
+//                 "#BB5179",
+//                 "#FAFF67",
+//                 "#58A27C"            ],
+//             data: [gucou, choCount, paCount,]
+//         }]
+//     },
+//     options: {
+//         title: {
+//         display: true,
+//         text: 'じゃんけんの出し手'
+//         }
+//     }
+// });
+
+// let barCtx = document.getElementById("myBarChart");
+// let myBarChart = new Chart(barCtx, {
+// type: 'bar',
+// data: {
+//     labels: ['勝ち', '負け'],
+//     datasets: [
+//     {
+//         label: '勝敗',
+//         data: [winCount, loseCount],
+//         backgroundColor: "rgba(219,39,91,0.5)"
+//     }
+//     ]
+// }
+// });
+
+
+
 
 //start()の関数。ボタンの表示、非表示を設定。disabled＝falseだとボタンを表示され、disabled＝tureだと非表示となる。
 function start(){
@@ -177,3 +224,6 @@ function display(){
     pa.disabled = true;
     reset.disabled = false;
 }
+
+
+

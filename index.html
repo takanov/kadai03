@@ -9,22 +9,46 @@
 </head>
 <body>
     <!-- ここから -->
-    <div>あいて:<span id="cpu"></span></div>
-    <div id="state" >最初はグー!じゃんけん・・・</div>
-    <div>あなた:<span id="player"></span></div>
-    <button id="gu">グー</button>
-    <button id="cho">チョキ</button>
-    <button id="pa">パー</button>
-    <button id="reset">reset</button>
-    <div>勝ち:<span id="win">0</span>回</div>
-    <div>負け:<span id="lose">0</span>回</div>
-    <div>ぐー:<span id="gu-count">0</span>回</div>
-    <div>ちょき:<span id="cho-count">0</span>回</div>
-    <div>ぱー:<span id="pa-count">0</span>回</div>
-    <!-- ここからまで -->
+    <h1 class="title">じゃんけんゲーム</h1>
+    <div class="mainContents">
+        <div class="state">
+            <div class="all-state">
+                <div>あいて:<span id="cpu"></span></div>
+                <div id="state" >最初はグー!じゃんけん・・・</div>
+                <div>あなた:<span id="player"></span></div>
+            </div>
+        
+            <div class="result-contets">
+                <div class="result-layout">
+                    <div>勝ち:<span id="win">0</span>回</div>
+                    <div>負け:<span id="lose">0</span>回</div>
+                </div>
+                <div class="jan-choice">
+                    <div>ぐー:<span id="gu-count">0</span>回</div>
+                    <div>ちょき:<span id="cho-count">0</span>回</div>
+                    <div>ぱー:<span id="pa-count">0</span>回</div>
+                </div>
+            </div>
+        </div>
 
+        <div class="btn-layout">
+            <div class="btn-jyan">
+                <button id="gu"><img src="img/janken_gu.png" alt="ぐー" width="300px"></button>
+                <button id="cho"><img src="img/janken_choki.png" alt="ちょき" width="300px"></button>
+                <button id="pa"><img src="img/janken_pa.png" alt="ぱー" width="300px"></button>
+            </div>
+            <div class="reset-layout">
+                <button id="reset" class="reset">reset</button>
+            </div>
+        </div>
+        
+        <!--<canvas id="myPieChart"></canvas>-->
+        <canvas id="myBarChart"></canvas>
+    </div>
+    <!-- ここからまで -->
     <!-- ここからjavascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

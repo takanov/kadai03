@@ -1,25 +1,108 @@
+.mainContents {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.btn-layout {
+
+}
+.btn-jyan {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 64px;
+}
+
+
+#gu,#cho,#pa {
+    display: block;
+    background-color: #fff;
+    border: none;
+}
+button#gu:hover, button#cho:hover, button#pa:hover {
+    opacity: 0.6;
+}
+
+.result-contets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 18px;
+    width: 300px;
+    border: 1px solid #666;
+    border-radius: 12px;
+    color: #666;
+    
+}
+
+.result-layout {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-right: 64px;
+    font-size: 24px;
+    
+}
+
+.jan-choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 160px;
+    font-size: 16px;
+}
+
+.title {
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 64px
+}
+
+
+
 .title,.kakegoe {
     text-align: center;
     margin-bottom: 64px;
 }
 
-.title {
-    font-size: 64px;
+
+
+.state {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: stretch;
+    margin-bottom: 64px;
+
+}
+.all-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 600px;
+    font-size: 24px;
+    padding: 24px;
+    background-color: #f7f7f7;
+    border-radius: 12px;
 }
 
-.start_btn {
+.reset-layout {
+    width: 1024px;
     text-align: center;
 }
 
-#start {
+.reset_btn {
+    text-align: center;
+}
+
+.reset {
     width: 300px;
-    height: 90px;
+    height: 48px;
     border: none;
-    background-color: #63d2ff;
+    background-color: #dadada;
     font-size: 24px;
     border-radius: 54px;
 }
-button#start:hover {
+button.reset:hover {
     opacity: 0.6;
 }
 
@@ -28,15 +111,9 @@ button#start:hover {
     display: none;
 }
 
-#gu__btn,#choki__btn,#par__btn {
-    display: block;
-    background-color: #fff;
-    border: none;
-}
 
-button#gu__btn:hover, button#choki__btn:hover, button#par__btn:hover {
-    opacity: 0.6;
-}
+
+
 
 
 .junken_lists {
