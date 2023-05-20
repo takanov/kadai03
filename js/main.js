@@ -8,6 +8,7 @@ const player = document.getElementById("player");
 const reset = document.getElementById("reset");
 const win = document.getElementById("win");
 const lose = document.getElementById("lose");
+const tie = document.getElementById("tie");
 const guClick = document.getElementById("gu-count");
 const choClick = document.getElementById("cho-count");
 const paClick = document.getElementById("pa-count");
@@ -32,6 +33,10 @@ let winCount = 0;
 
 //負けた回数をカウントする変数を設定。初期値は0
 let loseCount = 0;
+
+//あいこの回数をカウントする変数を設定。初期値は0
+let tieCount = 0;
+
 
 //ぐーを押した回数
 let guCount = 0;
@@ -73,6 +78,7 @@ gu.addEventListener("click", function (){
 
     //関数result()を呼び出し
     result();
+    updateGameResultsChart(myBarChart, winCount, loseCount, tieCount);
 }, false);
 
 
@@ -102,7 +108,7 @@ cho.addEventListener("click",function(){
 
     //関数result()を呼び出し
     result();
-    
+    updateGameResultsChart(myBarChart, winCount, loseCount, tieCount);
 }, false);
 
 //パーのボタンを押した時イベント。挙動はグーと同じ
@@ -129,6 +135,7 @@ pa.addEventListener("click",function(){
     updateChart(myPieChart, guCount, choCount, paCount); 
     //関数result()を呼び出し
     result();
+    updateGameResultsChart(myBarChart, winCount, loseCount, tieCount);
 }, false);
 
 //リセットボタンをクリックした時のイベント
@@ -145,6 +152,8 @@ function result(){
     //プレイヤーとCPUが同じだったら、stateにテキスト表示
     if(playjan === cpuja){
         state.textContent = "あいこで..."
+        tieCount++;
+        tie.textContent = tieCount;
 
     //プレイヤーが勝った場合の表示
     } else if(playjan === jans[0] && cpuja === jans[1] || playjan === jans[1] && cpuja === jans[2] || playjan === jans[2] && cpuja === jans[0]){
@@ -172,8 +181,8 @@ function result(){
 }
 
 
-
 //チャートの記述
+
 //type: タイプ,data: データ,options: オプション
 let ctx = document.getElementById("myPieChart");
 
@@ -192,10 +201,36 @@ let myPieChart = new Chart(ctx, {
     options: {
         title: {
         display: true,
-        text: 'じゃんけんの出し手'
+        text: 'じゃんけんの出し手',
         }
     }
 });
+let barCtx = document.getElementById("myBarChart");
+let myBarChart = new Chart(barCtx, {
+    type: 'bar',
+    data: {
+        labels: ['勝ち', '負け', 'あいこ'],
+        datasets: [
+        {
+            label: '勝敗',
+            data: [winCount, loseCount, tieCount],
+            backgroundColor: "rgba(219,39,91,0.5)"
+        }
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                    ticks: {     // 目盛り        
+                        min: 0,      // 最小値
+                        max: 25,     // 最大値
+                        stepSize: 5  // 間隔
+                    }
+                }]
+        }
+    }
+});
+
 
 //関数を使用してチャートを更新します。
 function updateChart(chart, count) {
@@ -208,20 +243,15 @@ function updateChart(chart, count) {
     chart.update(); 
 }
 
-// let barCtx = document.getElementById("myBarChart");
-// let myBarChart = new Chart(barCtx, {
-// type: 'bar',
-// data: {
-//     labels: ['勝ち', '負け'],
-//     datasets: [
-//     {
-//         label: '勝敗',
-//         data: [winCount, loseCount],
-//         backgroundColor: "rgba(219,39,91,0.5)"
-//     }
-//     ]
-// }
-// });
+function updateGameResultsChart(chart, winCount, loseCount, tieCount) {
+    // Update the chart data
+    chart.data.datasets[0].data[0] = winCount;
+    chart.data.datasets[0].data[1] = loseCount;
+    chart.data.datasets[0].data[2] = tieCount;
+
+    //グラフを更新する
+    chart.update();
+}
 
 //start()の関数。ボタンの表示、非表示を設定。disabled＝falseだとボタンを表示され、disabled＝tureだと非表示となる。
 function start(){
@@ -239,5 +269,7 @@ function display(){
     reset.disabled = false;
 }
 
-
+let braCanvas = document.querySelector('#myBarChart');
+let pieCanvas = document.querySelector('#myPieChart');
+//canvas size
 
