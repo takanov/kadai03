@@ -169,7 +169,6 @@ function result(){
         //負けた回数をテキストに表示
         lose.textContent = loseCount;
     }
-    console.log(winCount);
 }
 
 
