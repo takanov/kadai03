@@ -49,7 +49,7 @@ start();
 
 //ぐーのボタンを押下した時のイベント
 // =>はアロー関数：勉強しないと
-gu.addEventListener("click",function(){
+gu.addEventListener("click", function (){
     //プレイヤーのテキストにグーを表示
     player.textContent = jans[0];
 
@@ -68,11 +68,14 @@ gu.addEventListener("click",function(){
     //ぐーをクリックした回数をテキストに表示
     guClick.textContent = guCount;
 
-    let viewGu = guCount;
+    //チャートを更新するための関数を呼び出す
+    updateChart(myPieChart, guCount, choCount, paCount); 
+
     //関数result()を呼び出し
     result();
-    return viewGu;
-});
+}, false);
+
+
 
 //チョキのボタンを押した時イベント。挙動はグーと同じ
 cho.addEventListener("click",function(){
@@ -94,9 +97,13 @@ cho.addEventListener("click",function(){
     //ちょきをクリックした回数をテキストに表示
     choClick.textContent = choCount;
 
+    //チャートを更新するための関数を呼び出す
+    updateChart(myPieChart, guCount, choCount, paCount); 
+
     //関数result()を呼び出し
     result();
-});
+    
+}, false);
 
 //パーのボタンを押した時イベント。挙動はグーと同じ
 pa.addEventListener("click",function(){
@@ -118,11 +125,11 @@ pa.addEventListener("click",function(){
     //パーをクリックした回数をテキストに表示
     paClick.textContent = paCount;
 
-    
-
+    //チャートを更新するための関数を呼び出す
+    updateChart(myPieChart, guCount, choCount, paCount); 
     //関数result()を呼び出し
     result();
-});
+}, false);
 
 //リセットボタンをクリックした時のイベント
 reset.addEventListener("click",()=>{
@@ -146,10 +153,8 @@ function result(){
 
         //関数display()を呼び出し
         display();
-
         //勝った回数に一回プラス
         winCount++;
-
         //勝った回数をテキストに表示
         win.textContent = winCount;
     }else{
@@ -161,35 +166,48 @@ function result(){
 
         //負けた回数に1プラス
         loseCount++;
-
         //負けた回数をテキストに表示
         lose.textContent = loseCount;
     }
+    console.log(winCount);
 }
+
+
+
 //チャートの記述
 //type: タイプ,data: データ,options: オプション
-// let ctx = document.getElementById("myPieChart");
+let ctx = document.getElementById("myPieChart");
 
-// let myPieChart = new Chart(ctx, {
+let myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["ぐー", "ちょき", "ぱー"],
+        datasets: [{
+            backgroundColor: [
+                "#BB5179",
+                "#FAFF67",
+                "#58A27C"            ],
+            data: [guCount, choCount, paCount,]
+        }]
+    },
+    options: {
+        title: {
+        display: true,
+        text: 'じゃんけんの出し手'
+        }
+    }
+});
 
-//     type: 'pie',
-//     data: {
-//         labels: ["ぐー", "ちょき", "ぱー"],
-//         datasets: [{
-//             backgroundColor: [
-//                 "#BB5179",
-//                 "#FAFF67",
-//                 "#58A27C"            ],
-//             data: [gucou, choCount, paCount,]
-//         }]
-//     },
-//     options: {
-//         title: {
-//         display: true,
-//         text: 'じゃんけんの出し手'
-//         }
-//     }
-// });
+//関数を使用してチャートを更新します。
+function updateChart(chart, count) {
+    //チャートのカウントを更新する
+    chart.data.datasets[0].data[0] = guCount;  
+    chart.data.datasets[0].data[1] = choCount;
+    chart.data.datasets[0].data[2] = paCount;
+
+    //グラフを更新する
+    chart.update(); 
+}
 
 // let barCtx = document.getElementById("myBarChart");
 // let myBarChart = new Chart(barCtx, {
@@ -205,9 +223,6 @@ function result(){
 //     ]
 // }
 // });
-
-
-
 
 //start()の関数。ボタンの表示、非表示を設定。disabled＝falseだとボタンを表示され、disabled＝tureだと非表示となる。
 function start(){
