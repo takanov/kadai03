@@ -106,50 +106,7 @@ button.reset:hover {
     opacity: 0.6;
 }
 
-
-#play__junken {
-    display: none;
-}
-
-
-
-
-
-
-.junken_lists {
+.chart-layout {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    width: 1024px;
-    margin: 0 auto;
-}
-
-.contents {
-    width: 1024px;
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%,-50%,0);
-}
-
-.play_contents {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 64px;
-}
-
-.judment {
-    font-size: 64px;
-    text-align: center;
-    margin-top: 64px;
-}
-
-#me,#com {
-    display: none;
-    font-size: 16px;
-    text-align: center;
-}
-#result {
-    display: none;
+    margin-top: 128px;
 }

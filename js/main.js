@@ -184,9 +184,9 @@ let myPieChart = new Chart(ctx, {
         labels: ["ぐー", "ちょき", "ぱー"],
         datasets: [{
             backgroundColor: [
-                "#BB5179",
-                "#FAFF67",
-                "#58A27C"            ],
+                "#3b95d3",
+                "#e8c400",
+                "#c73327"            ],
             data: [guCount, choCount, paCount,]
         }]
     },
