@@ -104,6 +104,9 @@ button.reset:hover {
 }
 
 .chart-layout {
-    display: flex;
     margin-top: 128px;
+}
+
+.chart-layout #myBarChart {
+    margin-bottom: 128px;
 }
