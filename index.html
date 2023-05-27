@@ -10,12 +10,14 @@
 <body>
     <!-- ここから -->
     <h1 class="title">じゃんけんゲーム</h1>
+    <label>名前：<input type="text" id="nametext" value="名前を入力"></label>
+    <input type="button" value="スタート" id="checkButton">
     <div class="mainContents">
         <div class="state">
             <div class="all-state">
                 <div>あいて:<span id="cpu"></span></div>
                 <div id="state" >最初はグー!じゃんけん・・・</div>
-                <div>あなた:<span id="player"></span></div>
+                <div><span id="username">あなた</span>:<span id="player"></span></div>
             </div>
         
             <div class="result-contets">
