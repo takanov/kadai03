@@ -14,6 +14,22 @@ const choClick = document.getElementById("cho-count");
 const paClick = document.getElementById("pa-count");
 
 
+function buttonClick() {
+    userName.innerText = nameText.value;
+}
+
+function inputChange(event) {
+    console.log('event.currentTarget.value');
+}
+
+let nameText = document.getElementById("nametext");
+nameText.value = "名前";
+let userName = document.getElementById("username");
+
+let checkButton = document.getElementById("checkButton");
+checkButton.addEventListener('click',buttonClick);
+
+
 //idが取得できているか確認
 console.log(state,cpu,gu,cho,pa,player,reset,win,lose);
 
@@ -222,7 +238,7 @@ let myBarChart = new Chart(barCtx, {
         scales: {
             yAxes: [{
                     ticks: {     // 目盛り        
-                        min: 0,      // 最小値
+                        min: 0,      // 最小
                         max: 25,     // 最大値
                         stepSize: 5  // 間隔
                     }
@@ -272,4 +288,6 @@ function display(){
 let braCanvas = document.querySelector('#myBarChart');
 let pieCanvas = document.querySelector('#myPieChart');
 //canvas size
+
+
 
